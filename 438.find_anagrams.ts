@@ -12,7 +12,7 @@ function findAnagrams(s: string, p: string): number[] {
     let right: number = p.length - 1
     const pMap = new Map();
     for (let i = 0; i < p.length; i++) {
-        let count: number = pMap.get(p[i])
+        const count: number = pMap.get(p[i])
         if (count) {
             pMap.set(p[i], count + 1)
         } else {
@@ -24,7 +24,7 @@ function findAnagrams(s: string, p: string): number[] {
     while (right < s.length) {
         if (left == 0) {
             for (let i = left; i <= right; i++) {
-                let count: number = sMap.get(s[i])
+                const count: number = sMap.get(s[i])
                 if (count) {
                     sMap.set(s[i], count + 1)
                 } else {
@@ -32,10 +32,10 @@ function findAnagrams(s: string, p: string): number[] {
                 }
             }
         } else {
-            let removing: string = s[left - 1]
-            let newCount: number = sMap.get(removing) - 1
+            const removing: string = s[left - 1]
+            const newCount: number = sMap.get(removing) - 1
             sMap.set(removing, newCount)
-            let count: number = sMap.get(s[right])
+            const count: number = sMap.get(s[right])
             if (count) {
                 sMap.set(s[right], count + 1)
             } else {

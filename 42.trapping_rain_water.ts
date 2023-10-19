@@ -1,7 +1,7 @@
 function trap(height: number[]): number {
     let count: number = 0
-    let leftMax: number[] = []
-    let rightMax: number[] = []
+    const leftMax: number[] = []
+    const rightMax: number[] = []
 
     for (let i = 1; i < height.length; i++) {
         if (i == 1) {
