@@ -3,12 +3,16 @@
   "version": "1.0.0",
   "description": "",
   "main": "",
-  "scripts": {},
+  "scripts": {
+    "lint": "eslint *.ts",
+    "format": "eslint *.ts --fix"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "eslint": "^8.51.0",
+    "eslint": "^8.52.0",
+    "eslint-config-airbnb": "^19.0.4",
     "ts-node": "^10.9.1",
     "typescript": "^5.2.2"
   },

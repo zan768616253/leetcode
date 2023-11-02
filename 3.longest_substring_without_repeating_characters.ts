@@ -17,23 +17,22 @@ Explanation: The answer is "wke", with the length of 3.
 Notice that the answer must be a substring, "pwke" is a subsequence and not a substring.
 */
 
-
 function lengthOfLongestSubstring(s: string): number {
-	let max: number = 0
-	let left: number = 0
+  let max: number = 0;
+  let left: number = 0;
 
-	for (let right = 0; right < s.length; right++) {
-		for (let i = left; i < right; i++) {
-			if (s[i] == s[right]) {
-				left = i + 1
-				break
-			}
-		}
+  for (let right = 0; right < s.length; right++) {
+    for (let i = left; i < right; i++) {
+      if (s[i] == s[right]) {
+        left = i + 1;
+        break;
+      }
+    }
 
-		if (max < right - left + 1) {
-			max = right - left + 1
-		}
-	}
+    if (max < right - left + 1) {
+      max = right - left + 1;
+    }
+  }
 
-	return max
+  return max;
 }
