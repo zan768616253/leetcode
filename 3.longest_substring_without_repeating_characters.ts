@@ -23,7 +23,7 @@ function lengthOfLongestSubstring(s: string): number {
 
   for (let right = 0; right < s.length; right++) {
     for (let i = left; i < right; i++) {
-      if (s[i] == s[right]) {
+      if (s[i] === s[right]) {
         left = i + 1;
         break;
       }

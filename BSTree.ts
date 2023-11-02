@@ -55,23 +55,23 @@ class BST {
 
   public Remove(value: number): void {
     const node: TreeNode<number> | undefined = this.remove(this.root, value);
-    if (node != undefined) {
+    if (node !== undefined) {
       this.len--;
     }
   }
 
   private remove(node: TreeNode<number> | undefined, value: number): TreeNode<number> | undefined {
-    if (node == undefined) {
+    if (node === undefined) {
       return node;
     } if (value > node.value) {
       node.right = this.remove(node.right, value);
     } else if (value < node.value) {
       node.left = this.remove(node.left, value);
-    } else if (node.left == undefined) {
+    } else if (node.left === undefined) {
       node = node.right;
     } else {
       let tmp: TreeNode<number> | undefined = node.left;
-      while (tmp.right != undefined) {
+      while (tmp.right !== undefined) {
         tmp = tmp.right;
       }
       node.value = tmp.value;

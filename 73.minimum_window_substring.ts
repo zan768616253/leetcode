@@ -7,7 +7,7 @@ function minWindow1(s: string, t: string): string {
 
   for (let i: number = 0; i < t.length; i++) {
     if (tMap[t[i]]) {
-      tMap[t[i]] = tMap[t[i]] + 1;
+      tMap[t[i]] += 1;
     } else {
       tMap[t[i]] = 1;
     }
@@ -15,15 +15,15 @@ function minWindow1(s: string, t: string): string {
 
   while (right <= s.length) {
     if (check(sMap, tMap)) {
-      if (right - left < result.length || result == '') {
+      if (right - left < result.length || result === '') {
         result = s.substring(left, right);
       }
-      sMap[s[left]] = sMap[s[left]] - 1;
+      sMap[s[left]] -= 1;
       left++;
     } else {
       if (right < s.length) {
         if (sMap[s[right]]) {
-          sMap[s[right]] = sMap[s[right]] + 1;
+          sMap[s[right]] += 1;
         } else {
           sMap[s[right]] = 1;
         }

@@ -21,19 +21,20 @@ function rotate1(nums: number[], k: number): void {
   nums = [...nums.slice(i), ...nums.slice(0, i)];
 }
 
-function rotate2(nums: number[], k: number): void {
-  const n: number = nums.length;
-  k %= n;
-  reverse(nums, 0, n - 1);
-  reverse(nums, 0, k - 1);
-  reverse(nums, k, n - 1);
-}
 function reverse(nums: number[], start: number, end: number): void {
   while (start < end) {
     [nums[start], nums[end]] = [nums[end], nums[start]];
     start++;
     end--;
   }
+}
+
+function rotate2(nums: number[], k: number): void {
+  const n: number = nums.length;
+  k %= n;
+  reverse(nums, 0, n - 1);
+  reverse(nums, 0, k - 1);
+  reverse(nums, k, n - 1);
 }
 
 rotate1([1, 2, 3, 4], 2);
