@@ -20,6 +20,7 @@
         "no-console": "off",
         "no-plusplus": "off",
         "no-continue": "off",
-        "no-param-reassign": "off"
+        "no-param-reassign": "off",
+        "max-len": "off"
     }
 }

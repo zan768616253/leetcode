@@ -1,11 +1,26 @@
 package main
 
 func main() {
-	matrix := [][]int{
-		{1, 2, 3, 4},
-		{5, 6, 7, 8},
-		{9, 10, 11, 12},
-		{13, 14, 15, 16},
+	target := &ListNode{Val: 1}
+	isPalindrome(target)
+}
+
+func isPalindrome(head *ListNode) bool {
+	cache := make([]int, 0)
+	for head != nil {
+		cache = append(cache, head.Val)
+		head = head.Next
 	}
-	spiralOrder(matrix)
+
+	if len(cache)%2 != 0 {
+		return false
+	}
+
+	max := len(cache) - 1
+	for i := 0; i < len(cache)/2; i++ {
+		if cache[i] != cache[max-i] {
+			return false
+		}
+	}
+	return true
 }
