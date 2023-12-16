@@ -1,4 +1,4 @@
-import ListNode from './LinkedListUtility';
+import ListNode from './LinkedListUtility.ts';
 
 function revserseList1(head: ListNode | null): ListNode | null {
   let preNode: ListNode | null = null;

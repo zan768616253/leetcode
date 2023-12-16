@@ -4,6 +4,8 @@
     "experimentalSpecifierResolution": "node"
   },
   "compilerOptions": {
+    "allowImportingTsExtensions": true,
+    "noEmit": true,
     "esModuleInterop": true,
     "moduleResolution": "node",
     "module": "CommonJS",
