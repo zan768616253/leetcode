@@ -19,7 +19,7 @@ Input: head = [1,2], n = 1
 Output: [1]
 */
 
-function removeNthFromEnd(head: ListNode | null, n: number): ListNode | null {
+function removeNthFromEnd1(head: ListNode | null, n: number): ListNode | null {
   let count = 0;
 
   // Helper function to recursively find and remove the nth node from the end
@@ -52,6 +52,33 @@ function removeNthFromEnd(head: ListNode | null, n: number): ListNode | null {
   return dummy.next;
 }
 
+function removeNthFromEnd2(head: ListNode | null, n: number): ListNode | null {
+  const dmy = new ListNode(0, head);
+  let slow: ListNode | null = dmy;
+  let fast: ListNode | null = dmy;
+
+  // fast 向后移动 n 个位置
+  while (n-- > 0) {
+    if (!fast) {
+      return dmy.next;
+    }
+    fast = fast.next;
+  }
+
+  // fast 走到最后，slow 此时是 倒数第 n 个元素的前一个
+  while (fast !== null && fast.next !== null && slow !== null && slow.next !== null) {
+    fast = fast.next;
+    slow = slow.next;
+  }
+
+  // slow 的下一个节点就是要删除的节点
+  if (slow.next != null) {
+    slow.next = slow.next.next;
+  }
+
+  return dmy.next;
+}
+
 function testRemoveNthFromEnd() {
   // const head = new ListNode(1);
   // head.next = new ListNode(2);
@@ -60,7 +87,7 @@ function testRemoveNthFromEnd() {
   // head.next.next.next.next = new ListNode(5);
 
   const head = new ListNode(1);
-  const result = removeNthFromEnd(head, 1);
+  const result = removeNthFromEnd1(head, 1);
 }
 
 testRemoveNthFromEnd();
