@@ -21,6 +21,7 @@
         "no-plusplus": "off",
         "no-continue": "off",
         "no-param-reassign": "off",
-        "max-len": "off"
+        "max-len": "off",
+        "indent": 4
     }
 }

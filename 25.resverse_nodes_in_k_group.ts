@@ -14,71 +14,71 @@ Input: head = [1,2,3,4,5], k = 3
 Output: [3,2,1,4,5]
 */
 function reverseGroup(head: ListNode | null): ListNode | null {
-  if (head == null || head?.next == null) {
-    return head;
-  }
+    if (head == null || head?.next == null) {
+        return head;
+    }
 
-  const newHead = reverseGroup(head.next);
+    const newHead = reverseGroup(head.next);
 
-  const prev = head;
-  const cur = head.next;
-  cur.next = prev;
-  prev.next = null;
+    const prev = head;
+    const cur = head.next;
+    cur.next = prev;
+    prev.next = null;
 
-  return newHead;
+    return newHead;
 }
 
 function reverseKGroup(head: ListNode | null, k: number): ListNode | null {
-  const dummy = new ListNode();
-  dummy.next = head;
-  let slow: ListNode | null = dummy;
+    const dummy = new ListNode();
+    dummy.next = head;
+    let slow: ListNode | null = dummy;
 
-  while (head !== null) {
-    let fast: ListNode | null = null;
-    let start: ListNode | null = null;
-    let end: ListNode | null = null;
-    for (let i = 0; i < k; i++) {
-      if (head === null) {
-        return dummy.next;
-      }
-      if (i === 0) {
-        start = head;
-      } else if (i === k - 1) {
-        end = head;
-        fast = end.next;
-      }
-      head = head?.next;
+    while (head !== null) {
+        let fast: ListNode | null = null;
+        let start: ListNode | null = null;
+        let end: ListNode | null = null;
+        for (let i = 0; i < k; i++) {
+            if (head === null) {
+                return dummy.next;
+            }
+            if (i === 0) {
+                start = head;
+            } else if (i === k - 1) {
+                end = head;
+                fast = end.next;
+            }
+            head = head?.next;
+        }
+        if (end != null && start != null) {
+            end.next = null;
+            const newStart = reverseGroup(start);
+            slow.next = newStart;
+            start.next = fast;
+            slow = start;
+        }
     }
-    if (end != null && start != null) {
-      end.next = null;
-      const newStart = reverseGroup(start);
-      slow.next = newStart;
-      start.next = fast;
-      slow = start;
-    }
-  }
 
-  return dummy.next;
+    return dummy.next;
 }
 
 function testReverseKGroup() {
-  const head = new ListNode(1);
-  head.next = new ListNode(2);
-  head.next.next = new ListNode(3);
-  head.next.next.next = new ListNode(4);
-  head.next.next.next.next = new ListNode(5);
+    const head = new ListNode(1);
+    head.next = new ListNode(2);
+    head.next.next = new ListNode(3);
+    head.next.next.next = new ListNode(4);
+    head.next.next.next.next = new ListNode(5);
 
-  const result = reverseKGroup(head, 2);
-  return result;
+    const result = reverseKGroup(head, 2);
+    return result;
 }
 
 function testReverseGroup() {
-  const head = new ListNode(1);
-  head.next = new ListNode(2);
-  head.next.next = new ListNode(3);
+    const head = new ListNode(1);
+    head.next = new ListNode(2);
+    head.next.next = new ListNode(3);
 
-  const result = reverseGroup(head);
-  return result;
+    const result = reverseGroup(head);
+    return result;
 }
 
 // function reverseGroup2(head, tail) {

@@ -18,19 +18,19 @@ Output: [[0,0,0,0],[0,4,5,0],[0,3,1,0]]
  * @return {void} Do not return anything, modify matrix in-place instead.
  */
 function setZeroes(matrix: number[][]): void {
-  const m: number = matrix.length;
-  const n: number = (matrix[0] || []).length;
+    const m: number = matrix.length;
+    const n: number = (matrix[0] || []).length;
 
-  const copyMatrix: number[][] = matrix.map((row: number[]) => ([...row]));
+    const copyMatrix: number[][] = matrix.map((row: number[]) => ([...row]));
 
-  for (let i = 0; i < m; i++) {
-    for (let j = 0; j < n; j++) {
-      if (copyMatrix[i][j] === 0) {
-        matrix[i] = Array(n).fill(0);
-        for (let x = 0; x < m; x++) {
-          matrix[x][j] = 0;
+    for (let i = 0; i < m; i++) {
+        for (let j = 0; j < n; j++) {
+            if (copyMatrix[i][j] === 0) {
+                matrix[i] = Array(n).fill(0);
+                for (let x = 0; x < m; x++) {
+                    matrix[x][j] = 0;
+                }
+            }
         }
-      }
     }
-  }
 }
